@@ -46,6 +46,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1479232206242412
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4340695108361150}
+  - component: {fileID: 108352298725164958}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1504049939848592
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +177,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 2.27, z: 0}
   m_LocalScale: {x: 0.95, y: 1.7128171, z: 0.95}
-  m_Children: []
+  m_Children:
+  - {fileID: 4340695108361150}
   m_Father: {fileID: 4345299346010110}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,6 +208,19 @@ Transform:
   m_Father: {fileID: 4345299346010110}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 97.36401, y: -0.000015258789, z: -0.000015258789}
+--- !u!4 &4340695108361150
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479232206242412}
+  m_LocalRotation: {x: -0.28328985, y: -0.6927281, z: -0.6185431, w: 0.2393306}
+  m_LocalPosition: {x: 0, y: 0.54, z: 0}
+  m_LocalScale: {x: 1.5178537, y: 1.5178546, z: 0.84186554}
+  m_Children: []
+  m_Father: {fileID: 4051213745623394}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 263.008, y: -8.919006, z: 232.38}
 --- !u!4 &4345299346010110
 Transform:
   m_ObjectHideFlags: 1
@@ -198,7 +228,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1760282709652756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.98, y: 5.73, z: 0.32}
+  m_LocalPosition: {x: -40.98, y: 8.56, z: 0.32}
   m_LocalScale: {x: 0.6935, y: 0.6935, z: 0.6935}
   m_Children:
   - {fileID: 4392494318680372}
@@ -541,6 +571,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!108 &108352298725164958
+Light:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479232206242412}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 10
+  m_Range: 25
+  m_SpotAngle: 59
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114027660412281100
 MonoBehaviour:
   m_ObjectHideFlags: 1
