@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
@@ -21,6 +22,8 @@ public class Rocket : MonoBehaviour
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
 
+    bool Debugging = false;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +38,19 @@ public class Rocket : MonoBehaviour
         {
             RespondToThrustInput();
             RespondToRotateInput();
+            RespondToDebugKeys();
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            Invoke("LoadNextLevel", levelLoadDelay);
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            Debugging = !Debugging;
         }
     }
 
@@ -51,7 +67,10 @@ public class Rocket : MonoBehaviour
                 StartSuccessSequence();
                 break;
             default:
-                StartDeathSequence();
+                if (!Debugging)
+                {
+                    StartDeathSequence();
+                }
                 break;
         }
     }
@@ -76,12 +95,12 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1); // todo allow for more than 2 levels
+        SceneManager.LoadScene(5); // todo allow for more than 2 levels
     }
 
     private void LoadFirstLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
     }
 
     private void RespondToThrustInput()
