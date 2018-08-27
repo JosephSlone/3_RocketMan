@@ -22,7 +22,7 @@ public class Rocket : MonoBehaviour
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
 
-    bool Debugging = false;
+    bool collisionsDisabled = false;
 
     // Use this for initialization
     void Start()
@@ -38,25 +38,25 @@ public class Rocket : MonoBehaviour
         {
             RespondToThrustInput();
             RespondToRotateInput();
-            RespondToDebugKeys();
         }
+        RespondToDebugKeys();
     }
 
     private void RespondToDebugKeys()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Invoke("LoadNextLevel", levelLoadDelay);
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            Debugging = !Debugging;
+            collisionsDisabled = !collisionsDisabled;
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; } // ignore collisions when dead
+        if (state != State.Alive || collisionsDisabled) { return; } 
 
         switch (collision.gameObject.tag)
         {
@@ -67,11 +67,9 @@ public class Rocket : MonoBehaviour
                 StartSuccessSequence();
                 break;
             default:
-                if (!Debugging)
-                {
-                    StartDeathSequence();
-                }
-                break;
+
+            StartDeathSequence();
+            break;
         }
     }
 
@@ -95,12 +93,21 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(5); // todo allow for more than 2 levels
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex += 1;
+
+        if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+
+       
+        SceneManager.LoadScene(nextSceneIndex); // todo allow for more than 2 levels
     }
 
     private void LoadFirstLevel()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(0);
     }
 
     private void RespondToThrustInput()
